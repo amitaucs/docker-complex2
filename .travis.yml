@@ -6,7 +6,7 @@ before_install:
   - docker build -t amitaucs/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run asilva/react-test npm run test -- --coverage
+  - docker run -e CI=true amitaucs/react-test npm test
 
 after_success:
   - docker build -t amitaucs/multi-client ./client
